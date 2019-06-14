@@ -33,6 +33,7 @@ var Filter = function() {
         },
 
         childrenShare: function (elem, parent, widthRemainder, parentWidth) {
+            var _s = this;
             var textBlock = elem.querySelector('.catalog-filter-selected-link__text');
             var text = textBlock.textContent;
             var textAdd = '';
@@ -44,7 +45,7 @@ var Filter = function() {
 
             for (var j = 0; j < elem.textArr.length; j++) {
                 textAdd += elem.textArr[j] + " ";
-
+                console.log(widthRemainder);
                 if (j === elem.textArr.length - 1) {
                     block = self.newBlockTrimmingLeft(textAdd);
                     parent.insertBefore(block, elem);
@@ -60,7 +61,7 @@ var Filter = function() {
 
                     if (firstBlock) {
                         if (sizePost.width + 10 >= widthRemainder) {
-                            block = self.newBlockTrimmingRight(postTextAdd);
+                            block = self.newBlockTrimmingRight(postTextAdd.trim());
                             addBlock(block);
                             firstBlock = false;
                             continue;
@@ -68,7 +69,7 @@ var Filter = function() {
                     }
 
                     if (sizePost.height > 21) {
-                        block = self.newBlockTrimmingBoth(postTextAdd);
+                        block = self.newBlockTrimmingBoth(postTextAdd.trim());
                         addBlock(block);
                         continue;
                     }
@@ -78,7 +79,6 @@ var Filter = function() {
                         j--;
                         textAdd = '';
                         widthRemainder = parentWidth;
-                        console.log(widthRemainder);
                     }
 
                 } else {
@@ -206,9 +206,11 @@ var Filter = function() {
             var ch = self.getChildrenBoxes(elem).childrenSizes();
             var counter = 0;
             var parentWidth = self.getSizeBoxes(elem).width;
-            var widthRemainder = self.getSizeBoxes(elem).width;
+            var widthRemainder = parentWidth;
 
             ch.forEach(function (el) {
+                // debugger;
+
                 if (counter + el.size.width + 10 < parentWidth) {
                     counter += el.size.width + 10;
                     widthRemainder = parentWidth - counter;
@@ -218,7 +220,7 @@ var Filter = function() {
                     }
 
                     counter = 0;
-                    widthRemainder = self.getSizeBoxes(elem).width;
+                    widthRemainder = parentWidth;
                 }
             });
         }

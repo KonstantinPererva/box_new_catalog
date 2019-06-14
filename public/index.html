@@ -3519,19 +3519,6 @@
             </div>
           </div>
 
-          <script type="text/javascript">
-
-            document.addEventListener('DOMContentLoaded', function(e) {
-
-              var inputBrandId = 'filter-select-brand';
-              var popupSelectBrandsId = 'popup-select-filter-search';
-
-              filterSelectBrands.init(inputBrandId, popupSelectBrandsId);
-
-            });
-
-          </script>
-
         </div>
         <div class="table-cat" id="contTBgmTopTable">
 
@@ -9844,112 +9831,6 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript">
-    var voiceSearch;
-    window.addEventListener('load', function (){
-
-      elClouseSearch = document.querySelector('.search-form .clear_form');
-
-      if (elClouseSearch !== null) {
-        elClouseSearch.addEventListener('click', function (event) {
-          //alert('123');
-          location.href = '/';
-        });
-      }
-
-      if ((elSearch = document.querySelector('.inpsearchgm1[type="search"]')))
-      {
-        var search = new SRSearch(elSearch);
-        search.config.requestUrl = '/placeholder/';
-        voiceSearch = new VoiceSearch();
-        voiceSearch.init();
-      }
-      var mobileSearchInput = document.querySelector('.inpsearchgm[type="search"]');
-      if (mobileSearchInput){
-        var searchMob = new SRSearch(mobileSearchInput, {
-          'deviceType':'mobile',
-          'requestUrl':'/placeholder/',
-          'displayLang':false
-        });
-      }
-
-      elementsFilter = document.querySelectorAll('.head-tab-box input.filter');
-
-      if (elementsFilter.length > 0) {
-
-        window.objFilters = new Array();
-
-        [].forEach.call(elementsFilter, function(elem) {
-          paramTypeField = '?typeField=' + elem.getAttribute('data-name');
-          window.objFilters.push(new SRSearch(elem, {
-            'requestUrl' : '/placeholder/filter.php',
-            'displayLang':false,
-            'methodParams':paramTypeField
-          }));
-        });
-      }
-
-      var focusTimer = null;
-
-      var content = document.querySelector('.table-cat');
-      if (mobileSearchInput !== null)
-      {
-        mobileSearchInput.addEventListener('focus', function(event)
-        {
-          if (focusTimer !== null)
-          {
-            clearTimeout(focusTimer);
-          }
-          focusTimer = setTimeout(function (){
-            if (!mobileSearchInput.classList.contains('focus'))
-            {
-              mobileSearchInput.classList.add('focus');
-            }
-
-            if (!mobileSearchInput.parentNode.classList.contains('mask'))
-            {
-              mobileSearchInput.parentNode.classList.add('mask');
-            }
-
-            if (content !== null && !content.classList.contains('filter-blur'))
-            {
-              content.classList.add('filter-blur');
-            }
-          }, 50);
-        });
-
-        mobileSearchInput.addEventListener('blur', function (event)
-        {
-          if (mobileSearchInput.classList.contains('focus'))
-          {
-            mobileSearchInput.classList.remove('focus');
-          }
-
-          if (mobileSearchInput.parentNode.classList.contains('mask'))
-          {
-            mobileSearchInput.parentNode.classList.remove('mask');
-          }
-
-          if (content !== null && content.classList.contains('filter-blur'))
-          {
-            content.classList.remove('filter-blur');
-          }
-        });
-      }
-
-      if (typeof webkitSpeechRecognition === 'function') {
-        var btnMobileVoiceSearch = document.createElement('DIV');
-        btnMobileVoiceSearch.id = 'btnActivateVoiceMobile';
-        mobileSearchInput.parentNode.appendChild(btnMobileVoiceSearch);
-        var voiceMobileSearch = new VoiceMobileSearch();
-        voiceMobileSearch.init(mobileSearchInput);
-      }
-
-    });
-
-
-
-  </script>
 
   <style type="text/css">
 
@@ -10146,18 +10027,18 @@
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./javascripts/jquery.formstyler.js"></script>
+    <!--<script src="./javascripts/jquery.formstyler.js"></script>-->
     <script src="./javascripts/cabinet-catalog.js"></script>
-    <script src="./javascripts/filter.js"></script>
+    <!--<script src="./javascripts/filter.js"></script>-->
 
-    <script>
-        (function($) {
-            $(function() {
-                $('input[type="number"],input[type="checkbox"], select').styler({
-                    selectSearch: true
-                });
-            });
-        })(jQuery);
-    </script>
+    <!--<script>-->
+        <!--(function($) {-->
+            <!--$(function() {-->
+                <!--$('input[type="number"],input[type="checkbox"], select').styler({-->
+                    <!--selectSearch: true-->
+                <!--});-->
+            <!--});-->
+        <!--})(jQuery);-->
+    <!--</script>-->
 </body>
 </html>
