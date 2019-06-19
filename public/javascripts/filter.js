@@ -209,8 +209,6 @@ var Filter = function() {
             var widthRemainder = parentWidth;
 
             ch.forEach(function (el) {
-                // debugger;
-
                 if (counter + el.size.width + 10 < parentWidth) {
                     counter += el.size.width + 10;
                     widthRemainder = parentWidth - counter;
