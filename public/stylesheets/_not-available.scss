@@ -1,0 +1,32 @@
+@import "var";
+
+.not-available {
+  display: flex;
+  align-items: center;
+
+  &__ico {
+    display: block;
+    margin: 0 6px 0 0;
+
+    & svg {
+      display: block;
+
+      & path {
+        fill: $c-not-available;
+      }
+    }
+  }
+
+  &__text {
+    display: block;
+    font-size: 11px;
+    color: $c-not-available;
+    margin: 0 6px 0 0;
+  }
+
+  &__date {
+    display: block;
+    font-size: 11px;
+    color: $c-not-available;
+  }
+}

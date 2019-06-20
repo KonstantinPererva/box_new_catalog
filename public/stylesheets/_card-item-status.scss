@@ -1,0 +1,25 @@
+.card-item-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 45px;
+
+  &__item {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: block;
+    margin: 0 5px 5px 0;
+
+    &:nth-child(even) {
+      margin: 0 0 5px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    display: block;
+  }
+}

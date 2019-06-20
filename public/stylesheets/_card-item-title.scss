@@ -1,0 +1,20 @@
+@import "var";
+
+.card-item-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  height: 20px;
+  border-radius: 10px;
+  background: $c-bg-title-card;
+
+  &__text {
+    display: block;
+    font-size: 9px;
+    color: #fff;
+  }
+}

@@ -1,0 +1,38 @@
+@import "var";
+
+.card-item-favorite {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background: 0;
+  border: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  outline: none;
+  user-select: none;
+
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+
+      & svg path {
+        fill: $c-favorite-active;
+      }
+    }
+  }
+
+  &:focus, &:active {
+    outline: none;
+  }
+
+  & svg {
+    display: block;
+    width: 100%;
+
+    & path {
+      fill: $c-favorite;
+      transition: .15s;
+    }
+  }
+}
