@@ -1,3 +1,25 @@
+@import "var";
+
 .card-item-table {
 
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 5px 0;
+  }
+
+  &__property {
+    font-size: 11px;
+    color: $c-property;
+    font-family: $f-l;
+    padding: 0 10px 0 0;
+  }
+
+  &__value {
+    font-size: 13px;
+    color: $c-text-main;
+    font-family: $f-l;
+    padding: 0 0 0 10px;
+  }
 }

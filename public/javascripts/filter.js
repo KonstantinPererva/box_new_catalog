@@ -1,5 +1,7 @@
 var Filter = function() {
     var self = {
+        elemList: [],
+
         getSizeBoxes : function (elem) {
             var elemWidth = elem.getBoundingClientRect().right - elem.getBoundingClientRect().left;
             var elemHeight = elem.getBoundingClientRect().bottom - elem.getBoundingClientRect().top;
@@ -32,65 +34,65 @@ var Filter = function() {
             }
         },
 
-        childrenShare: function (elem, parent, widthRemainder, parentWidth) {
-            var _s = this;
-            var textBlock = elem.querySelector('.catalog-filter-selected-link__text');
-            var text = textBlock.textContent;
-            var textAdd = '';
-            var postTextAdd = '';
-            var block = null;
-            var firstBlock = true;
+        childrenShare: function () {
+            self.elemList.forEach(function (elem) {
+                var textBlock = elem.querySelector('.catalog-filter-selected-link__text');
+                var text = textBlock.textContent;
+                var textAdd = '';
+                var postTextAdd = '';
+                var block = null;
+                var firstBlock = true;
 
-            elem.textArr = text.split(' ');
+                elem.textArr = text.split(' ');
 
-            for (var j = 0; j < elem.textArr.length; j++) {
-                textAdd += elem.textArr[j] + " ";
-                console.log(widthRemainder);
-                if (j === elem.textArr.length - 1) {
-                    block = self.newBlockTrimmingLeft(textAdd);
-                    parent.insertBefore(block, elem);
-                } else {
-                    block = self.newBlockTrimmingRight(textAdd);
-                    parent.insertBefore(block, elem);
-                }
+                for (var j = 0; j < elem.textArr.length; j++) {
+                    textAdd += elem.textArr[j] + " ";
+                    if (j === elem.textArr.length - 1) {
+                        block = self.newBlockTrimmingLeft(textAdd);
+                        elem.parent.insertBefore(block, elem);
+                    } else {
+                        block = self.newBlockTrimmingRight(textAdd);
+                        elem.parent.insertBefore(block, elem);
+                    }
 
-                var sizePost = self.getSizeBoxes(block);
+                    var sizePost = self.getSizeBoxes(block);
 
-                if (sizePost.height > 21 || sizePost.width + 10 >= widthRemainder) {
-                    block.remove();
+                    if (sizePost.height > 21 || sizePost.width + 10 >= elem.widthRemainder) {
+                        block.remove();
 
-                    if (firstBlock) {
-                        if (sizePost.width + 10 >= widthRemainder) {
-                            block = self.newBlockTrimmingRight(postTextAdd.trim());
+                        if (firstBlock) {
+                            if (sizePost.width + 10 >= elem.widthRemainder) {
+                                block = self.newBlockTrimmingRight(postTextAdd.trim());
+                                addBlock(block);
+                                firstBlock = false;
+                                continue;
+                            }
+                        }
+
+                        if (sizePost.height > 21) {
+                            block = self.newBlockTrimmingBoth(postTextAdd.trim());
                             addBlock(block);
-                            firstBlock = false;
                             continue;
                         }
+
+                        function addBlock(block) {
+                            elem.parent.insertBefore(block, elem);
+                            j--;
+                            textAdd = '';
+                            elem.widthRemainder = elem.parentWidth;
+                        }
+
+                    } else {
+                        postTextAdd = textAdd;
                     }
 
-                    if (sizePost.height > 21) {
-                        block = self.newBlockTrimmingBoth(postTextAdd.trim());
-                        addBlock(block);
-                        continue;
+                    if (j !== elem.textArr.length - 1) {
+                        block.remove();
                     }
-
-                    function addBlock(block) {
-                        parent.insertBefore(block, elem);
-                        j--;
-                        textAdd = '';
-                        widthRemainder = parentWidth;
-                    }
-
-                } else {
-                    postTextAdd = textAdd;
                 }
 
-                if (j !== elem.textArr.length - 1) {
-                    block.remove();
-                }
-            }
-
-            elem.remove();
+                elem.remove();
+            });
         },
 
         newBlockTrimmingRight: function(text) {
@@ -204,31 +206,32 @@ var Filter = function() {
 
         counterWidth: function (elem) {
             var ch = self.getChildrenBoxes(elem).childrenSizes();
-            var counter = 0;
+            var width = 0;
             var parentWidth = self.getSizeBoxes(elem).width;
             var widthRemainder = parentWidth;
 
             ch.forEach(function (el) {
-                if (counter + el.size.width + 10 < parentWidth) {
-                    counter += el.size.width + 10;
-                    widthRemainder = parentWidth - counter;
+                if (width + el.size.width + 10 < parentWidth) {
+                    width += el.size.width + 10;
+                    widthRemainder = parentWidth - width;
                 } else {
                     if (el.size.width + 10 === parentWidth && el.size.height > 21) {
-                        self.childrenShare(el, elem, widthRemainder, parentWidth);
+                        el.parent = elem;
+                        el.widthRemainder = widthRemainder;
+                        el.parentWidth = parentWidth;
+
+                        self.elemList.push(el);
                     }
 
-                    counter = 0;
+                    width = 0;
                     widthRemainder = parentWidth;
                 }
             });
+
+            self.childrenShare();
         }
     };
 
     return self;
 };
 
-var filter = new Filter();
-
-var par = document.querySelector('.catalog-filter-list');
-
-filter.counterWidth(par);

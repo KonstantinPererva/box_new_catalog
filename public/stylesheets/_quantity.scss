@@ -1,0 +1,61 @@
+@import "var";
+
+$border: $c-gray-2;
+$bg-btn-hover: $c-blue-light;
+$btn-ico: $c-blue;
+
+.quantity {
+  width: 53px;
+  height: 20px;
+  border: 1px solid $border;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+  background: #fff;
+
+  &__btn {
+    flex-shrink: 0;
+    height: 18px;
+    width: 17px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .15s;
+    outline: none;
+    user-select: none;
+    
+    @media (hover: hover) {
+      &:hover {
+        cursor: pointer;
+        background: $bg-btn-hover;
+      }
+    }
+  }
+
+  &__ico {
+    display: block;
+
+    & path {
+      fill: $btn-ico;
+    }
+
+    & rect {
+      fill: $btn-ico;
+    }
+  }
+
+  &__input {
+    flex-shrink: 0;
+    width: 17px;
+    border: 0;
+    background: transparent;
+    font-size: 13px;
+    line-height: 17px;
+    font-family: $f-l;
+    color: $c-text-main;
+    text-align: center;
+  }
+}

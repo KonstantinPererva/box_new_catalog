@@ -1,5 +1,8 @@
 @import "var";
 
+$ico: $c-gray-1;
+$ico-active: $c-red;
+
 .card-item-favorite {
   width: 20px;
   height: 20px;
@@ -17,7 +20,7 @@
       cursor: pointer;
 
       & svg path {
-        fill: $c-favorite-active;
+        stroke: $ico-active;
       }
     }
   }
@@ -31,8 +34,15 @@
     width: 100%;
 
     & path {
-      fill: $c-favorite;
+      stroke: $ico;
       transition: .15s;
+    }
+  }
+
+  &_active {
+    & svg path {
+      fill: $ico-active;
+      stroke: $ico-active;
     }
   }
 }

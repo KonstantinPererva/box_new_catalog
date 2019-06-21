@@ -1,0 +1,22 @@
+@import "button-common";
+
+$c-bg: $c-blue;
+$c-bg-hover: $c-blue-dark;
+
+.card-item-more {
+  @extend %button-common;
+  height: 28px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #fff;
+  background: $c-bg;
+  border-color: $c-bg;
+  padding: 0 35px;
+
+  @media (hover:hover) {
+    &:hover {
+      background: $c-blue-dark;
+      border-color: $c-blue-dark;
+    }
+  }
+}

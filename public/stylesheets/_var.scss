@@ -1,13 +1,18 @@
 $c-red: #E30613;
-$c-gray: #d0d1d1;
-$c-gray-dark: #666;
+$c-gray-1: #d0d1d1;
+$c-gray-2: #B3B3B3;
+$c-gray-3: #666;
 $c-blue: #344E9F;
+$c-blue-dark: #122a74;
+$c-blue-light: #F2F5FF;
 $c-green: #038100;
+$c-black: #333;
+
+$f-l: "lucida regular", sans-serif;
 
 $c-border: #d0d1d1;
 $c-bg-title-card: $c-red;
-$c-favorite: $c-gray;
-$c-favorite-active: $c-red;
 $c-available: $c-green;
-$c-not-available: $c-gray-dark;
+$c-not-available: $c-gray-3;
 $c-property: $c-blue;
+$c-text-main: $c-black;

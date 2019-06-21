@@ -2515,7 +2515,8 @@ span.hide-close-2 {
   margin-bottom: 0;
   padding: 6px 8px; }
 
-span.hide-close-1, span.hide-close-2 {
+span.hide-close-1,
+span.hide-close-2 {
   top: 3px !important; }
 
 #popup-product .img-box img {
@@ -2867,7 +2868,8 @@ span.hide-close-1, span.hide-close-2 {
     padding: 10px 8px; }
   .grey-hd {
     display: none; }
-  .cab .table-cat:after, .bx-cont:after {
+  .cab .table-cat:after,
+  .bx-cont:after {
     display: none; }
   .tablbox_left span em {
     display: none; }
@@ -3087,7 +3089,8 @@ span.hide-close-1, span.hide-close-2 {
     margin-right: 20px; }
   .list-action .img-block img {
     width: 100%; }
-  .list-action .link-class a, .list-action .txt-block a {
+  .list-action .link-class a,
+  .list-action .txt-block a {
     margin-top: 10px; }
   .holder {
     width: 100%; }
@@ -4431,16 +4434,20 @@ span.present-icon {
   display: block; }
 
 .card-list {
-  width: 100%; }
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; }
 
 .card-item {
   width: 225px;
   border: 1px solid #d0d1d1;
-  padding: 10px; }
+  padding: 9px 9px 7px;
+  margin: 0 8px 8px; }
   .card-item__header {
     position: relative; }
   .card-item__body {
-    padding: 8px 0 0; }
+    padding: 8px 0 0;
+    margin: 0 0 10px; }
 
 .catalog {
   display: flex;
@@ -4506,15 +4513,18 @@ span.present-icon {
     .card-item-favorite:hover {
       cursor: pointer; }
       .card-item-favorite:hover svg path {
-        fill: #E30613; } }
+        stroke: #E30613; } }
   .card-item-favorite:focus, .card-item-favorite:active {
     outline: none; }
   .card-item-favorite svg {
     display: block;
     width: 100%; }
     .card-item-favorite svg path {
-      fill: #d0d1d1;
+      stroke: #d0d1d1;
       transition: .15s; }
+  .card-item-favorite_active svg path {
+    fill: #E30613;
+    stroke: #E30613; }
 
 .card-item-name {
   margin: 0 0 20px; }
@@ -4564,5 +4574,104 @@ span.present-icon {
     display: block;
     font-size: 11px;
     color: #666; }
+
+.card-item-table__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 5px 0; }
+
+.card-item-table__property {
+  font-size: 11px;
+  color: #344E9F;
+  font-family: "lucida regular", sans-serif;
+  padding: 0 10px 0 0; }
+
+.card-item-table__value {
+  font-size: 13px;
+  color: #333;
+  font-family: "lucida regular", sans-serif;
+  padding: 0 0 0 10px; }
+
+.quantity {
+  width: 53px;
+  height: 20px;
+  border: 1px solid #B3B3B3;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+  background: #fff; }
+  .quantity__btn {
+    flex-shrink: 0;
+    height: 18px;
+    width: 17px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .15s;
+    outline: none;
+    user-select: none; }
+    @media (hover: hover) {
+      .quantity__btn:hover {
+        cursor: pointer;
+        background: #F2F5FF; } }
+  .quantity__ico {
+    display: block; }
+    .quantity__ico path {
+      fill: #344E9F; }
+    .quantity__ico rect {
+      fill: #344E9F; }
+  .quantity__input {
+    flex-shrink: 0;
+    width: 17px;
+    border: 0;
+    background: transparent;
+    font-size: 13px;
+    line-height: 17px;
+    font-family: "lucida regular", sans-serif;
+    color: #333;
+    text-align: center; }
+
+.card-item-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  font-family: "lucida regular", sans-serif;
+  transition: .15s;
+  border-width: 1px;
+  border-style: solid;
+  outline: none;
+  user-select: none;
+  text-decoration: none;
+  vertical-align: top;
+  white-space: nowrap; }
+  @media (hover: hover) {
+    .card-item-more:hover {
+      outline: none;
+      cursor: pointer;
+      text-decoration: none; } }
+  .card-item-more:hover, .card-item-more:focus, .card-item-more:active {
+    text-decoration: none;
+    outline: none; }
+
+.card-item-more {
+  height: 28px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #fff;
+  background: #344E9F;
+  border-color: #344E9F;
+  padding: 0 35px; }
+  @media (hover: hover) {
+    .card-item-more:hover {
+      background: #122a74;
+      border-color: #122a74; } }
+
+.card-item-presence {
+  margin: 0 0 3px; }
 
 /*# sourceMappingURL=style.css.map */
