@@ -1,0 +1,13 @@
+@import "var";
+
+$bg-row: $c-gray-4;
+
+.table-row {
+  display: table-row;
+  align-items: center;
+  height: 25px;
+
+  &:nth-child(odd) {
+    background: $bg-row;
+  }
+}

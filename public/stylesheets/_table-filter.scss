@@ -1,0 +1,28 @@
+.table-filter {
+  position: relative;
+
+  &__ico {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: 0;
+    padding: 0;
+
+    @media (hover: hover) {
+      cursor: pointer;
+    }
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    font-size: 11px;
+    border: 0;
+    background: transparent;
+    height: 25px;
+    padding: 0 27px 0 10px;
+  }
+}

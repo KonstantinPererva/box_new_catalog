@@ -1,0 +1,16 @@
+.table-cell {
+  flex: 1;
+  height: 25px;
+  display: table-cell;
+  border: 1px solid ;
+  align-items: center;
+  font-size: 11px;
+  font-family: $f-l;
+  vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &_hr {
+    text-align: center;
+  }
+}

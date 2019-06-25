@@ -882,18 +882,21 @@ h1{
   background:     #fbec88;
 }
 .aside{
-  width:13%;
-  float:left;
+  flex-shrink: 0;
+  width: 280px;
   position:relative;
-  margin-right:   12px;
-  min-width:280px;
+  margin-right: 12px;
+  min-width: 280px;
   max-width: 50%;
+  padding: 10px 0 10px 15px;
 }
 .main-holder{
-  padding:10px 15px;
+  flex-grow: 1;
+  padding:10px 15px 10px 0;
   /*  max-width:1515px;*/
   margin:0 auto;
-  width:98%;
+  width: calc(100% - 42px);
+  min-width: 50%;
 }
 .cat-filter{
   text-align: center;

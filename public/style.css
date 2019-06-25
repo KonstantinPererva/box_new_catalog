@@ -912,18 +912,21 @@ h1 {
   background: #fbec88; }
 
 .aside {
-  width: 13%;
-  float: left;
+  flex-shrink: 0;
+  width: 280px;
   position: relative;
   margin-right: 12px;
   min-width: 280px;
-  max-width: 50%; }
+  max-width: 50%;
+  padding: 10px 0 10px 15px; }
 
 .main-holder {
-  padding: 10px 15px;
+  flex-grow: 1;
+  padding: 10px 15px 10px 0;
   /*  max-width:1515px;*/
   margin: 0 auto;
-  width: 98%; }
+  width: calc(100% - 42px);
+  min-width: 50%; }
 
 .cat-filter {
   text-align: center;
@@ -4467,16 +4470,14 @@ span.present-icon {
   position: absolute;
   top: 0;
   left: 0;
-  display: flex;
-  flex-wrap: wrap;
-  width: 45px; }
+  display: flex; }
   .card-item-status__item {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
     display: block;
     margin: 0 5px 5px 0; }
-    .card-item-status__item:nth-child(even) {
+    .card-item-status__item:last-child(even) {
       margin: 0 0 5px; }
   .card-item-status__img {
     width: 100%;
@@ -4673,5 +4674,61 @@ span.present-icon {
 
 .card-item-presence {
   margin: 0 0 3px; }
+
+.table-header {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse; }
+
+.table-body {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse; }
+
+.table-row {
+  display: table-row;
+  align-items: center;
+  height: 25px; }
+  .table-row:nth-child(odd) {
+    background: #fcfcfc; }
+
+.table-cell {
+  flex: 1;
+  height: 25px;
+  display: table-cell;
+  border: 1px solid;
+  align-items: center;
+  font-size: 11px;
+  font-family: "lucida regular", sans-serif;
+  vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap; }
+  .table-cell_hr {
+    text-align: center; }
+
+.table-filter {
+  position: relative; }
+  .table-filter__ico {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: 0;
+    padding: 0; }
+    @media (hover: hover) {
+      .table-filter__ico {
+        cursor: pointer; } }
+  .table-filter__input {
+    display: block;
+    width: 100%;
+    font-size: 11px;
+    border: 0;
+    background: transparent;
+    height: 25px;
+    padding: 0 27px 0 10px; }
 
 /*# sourceMappingURL=style.css.map */

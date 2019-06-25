@@ -3,8 +3,6 @@
   top: 0;
   left: 0;
   display: flex;
-  flex-wrap: wrap;
-  width: 45px;
 
   &__item {
     width: 20px;
@@ -13,7 +11,7 @@
     display: block;
     margin: 0 5px 5px 0;
 
-    &:nth-child(even) {
+    &:last-child(even) {
       margin: 0 0 5px;
     }
   }
